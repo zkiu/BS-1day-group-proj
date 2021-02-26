@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import axios from "axios";
 import Picture from "./components/Picture";
-// import Answer from "./components/Answer";
+import Answer from "./components/Answer";
 
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 let randomPokemonId = 0;
@@ -44,9 +44,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <Picture picture={this.state.picture} />
-        {/* <Answer name={this.state.name} id={this.state.id} /> */}
+        <Answer name={this.state.name} id={this.state.id} /> 
         <h1> {this.state.name}</h1>
-        <button onClick={this.reloadPokemon.bind(this)}>Refresh</button>
+        <button onClick={this.reloadPokemon.bind(this)}>Refresh</button> 
       </div>
     );
   }
