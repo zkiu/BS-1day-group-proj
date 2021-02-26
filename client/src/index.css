@@ -23,6 +23,6 @@ code {
 	filter: blur(5px) grayscale(100%) contrast(0.1);
 }
 
-/* .img-container__img.toggle-img {
+.img-container__img.toggle-img {
 	filter: none;
-} */
+}
