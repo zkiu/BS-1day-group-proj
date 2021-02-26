@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import react, {Component} from 'react';
 //option #1//
 function Answer() {
@@ -53,3 +54,18 @@ class GiveAnswer extends Component {
 
 // export default Answer; 
 // export default GiveAnswer;
+=======
+import react from "react";
+
+function Answer(props) {
+  return (
+    <ul className="full-answer">
+      <li key={props.id} className="character-name">
+        <h2>{props.name}</h2>
+      </li>
+    </ul>
+  );
+}
+
+export default Answer;
+>>>>>>> 99ec530d726b9d0f913814504fdc8559331d0481
