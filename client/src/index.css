@@ -19,12 +19,10 @@ code {
 }
 
 .img-container__img {
-	width: 30vw;
-	filter: grayscale(100%);
-	filter: blur(9);
+	width: 50vw;
+	filter: blur(5px) grayscale(100%) contrast(0.1);
 }
 
-.img-container__img.toggle-img {
-	filter: grayscale(0%);
-	filter: blur(0);
-}
+/* .img-container__img.toggle-img {
+	filter: none;
+} */
