@@ -8,7 +8,7 @@ export default function Picture({ picture }) {
 		<div className="img-container">
 			<img
 				id="pokepic"
-				className="img-container__img toggle-img"
+				className="img-container__img"
 				src={picture}
 				alt="pokemon"
 			/>
