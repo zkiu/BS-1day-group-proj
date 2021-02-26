@@ -10,15 +10,15 @@ let randomPokemonId = 0;
 class App extends React.Component {
   state = {
     picture: "",
-    name: "",
+    name: [],
     id: "",
   };
+  componentDidMount() {
+    this.getPokemon();
+  }
 
   getRandomId() {
     return Math.floor(Math.random() * Math.floor(151));
-  }
-  componentDidMount() {
-    this.getPokemon();
   }
 
   getPokemon() {
@@ -30,22 +30,36 @@ class App extends React.Component {
   }
   getPokemonData = (id) => {
     axios
-      .get(apiUrl + id)
-      .then((respone) => {
-        this.setState({
-          picture: respone.data.sprites.other["official-artwork"].front_default,
-          name: respone.data.name,
-          id: respone.data.id,
-        });
-      })
-      .catch((error) => console.log(error));
+      .all([
+        axios.get(apiUrl + id),
+        axios.get(apiUrl + (id + 1)),
+        axios.get(apiUrl + (id + 2)),
+        axios.get(apiUrl + (id + 3)),
+      ])
+      .then(
+        axios.spread((respone1, respone2, respone3, respone4) => {
+          this.setState({
+            picture:
+              respone1.data.sprites.other["official-artwork"].front_default,
+            id: respone1.data.id,
+          });
+
+          let newArray = [];
+          newArray.push(respone1.data.name);
+          newArray.push(respone2.data.name);
+          newArray.push(respone3.data.name);
+          newArray.push(respone4.data.name);
+          this.setState({ name: newArray });
+        })
+      );
   };
+
   render() {
     return (
       <div className="App">
         <Picture picture={this.state.picture} />
-        {/* <Answer name={this.state.name} id={this.state.id} /> */}
-        <h1> {this.state.name}</h1>
+        {/* <Answer name={this.state.name[0]} id={this.state.id} /> */}
+
         <button onClick={this.reloadPokemon.bind(this)}>Refresh</button>
       </div>
     );
