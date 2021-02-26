@@ -31,3 +31,12 @@ li {
   list-style: none;
   text-transform: capitalize;
 }
+.character-name__frame{
+  visibility: hidden;
+}
+
+.character-name {
+  font-size: large;
+  color: orange;
+}
+
