@@ -1,8 +1,10 @@
 import React from "react";
 import "./App.css";
 import axios from "axios";
+import Picture from "./components/Picture";
 
-const apiUrl = "https://pokeapi.co/api/v2/pokemon/1";
+const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
+let randomPokemonId = 0;
 
 class App extends React.Component {
   state = {
@@ -10,12 +12,16 @@ class App extends React.Component {
     name: "",
   };
 
-  componentDidMount() {
-    this.getPokemonData();
+  getRandomId() {
+    return Math.floor(Math.random() * Math.floor(151));
   }
-  getPokemonData = () => {
+  componentDidMount() {
+    randomPokemonId = this.getRandomId();
+    this.getPokemonData(randomPokemonId);
+  }
+  getPokemonData = (id) => {
     axios
-      .get(apiUrl)
+      .get(apiUrl + id)
       .then((respone) => {
         console.log(respone);
         this.setState({
@@ -28,7 +34,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <img src={this.state.picture} alt="pokemon picture" />
+        <Picture picture={this.state.picture} />
         <h1>{this.state.name}</h1>
       </div>
     );
