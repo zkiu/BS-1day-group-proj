@@ -21,6 +21,7 @@ code {
 .img-container__img {
 	width: 50vw;
 	filter: blur(5px) grayscale(100%) contrast(0.1);
+	transition: all 1s;
 }
 
 .img-container__img.toggle-img {
