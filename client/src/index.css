@@ -19,7 +19,7 @@ code {
 }
 
 .img-container__img {
-  width: 200px;
+  width: 400px;
   filter: blur(5px) grayscale(100%) contrast(0.1);
   transition: all 1s;
 }
@@ -46,4 +46,17 @@ h2 {
 
 .large {
   font-size: 3rem;
+}
+
+.incorrect {
+  color: red;
+  visibility: hidden;
+}
+.correct {
+  color: green;
+  visibility: hidden;
+}
+
+input {
+  margin: 0.5rem 0;
 }

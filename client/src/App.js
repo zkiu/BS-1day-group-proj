@@ -16,15 +16,15 @@ class App extends React.Component {
   componentDidMount() {
     this.getPokemon();
   }
+  getPokemon() {
+    randomPokemonId = this.getRandomId();
+    this.getPokemonData(randomPokemonId);
+  }
 
   getRandomId() {
     return Math.floor(Math.random() * Math.floor(151));
   }
 
-  getPokemon() {
-    randomPokemonId = this.getRandomId();
-    this.getPokemonData(randomPokemonId);
-  }
   reloadPokemon() {
     this.getPokemon();
     document.querySelector("#pokepic").classList.toggle("toggle-img");
@@ -47,10 +47,12 @@ class App extends React.Component {
           });
 
           let newArray = [];
+
           newArray.push(respone1.data.name);
           newArray.push(respone2.data.name);
           newArray.push(respone3.data.name);
           newArray.push(respone4.data.name);
+
           this.setState({ name: newArray });
         })
       );
