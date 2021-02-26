@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import axios from "axios";
+import Picture from "./components/Picture";
 
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 let randomPokemonId = 0;
@@ -33,7 +34,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <img src={this.state.picture} alt="pokemon sprite" />
+        <Picture picture={this.state.picture} />
         <h1>{this.state.name}</h1>
       </div>
     );
