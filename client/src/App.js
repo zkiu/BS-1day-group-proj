@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import axios from "axios";
 import Picture from "./components/Picture";
+import Answer from "./components/Answer";
 
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 let randomPokemonId = 0;
@@ -10,6 +11,7 @@ class App extends React.Component {
   state = {
     picture: "",
     name: "",
+    id: "",
   };
 
   getRandomId() {
@@ -23,10 +25,11 @@ class App extends React.Component {
     axios
       .get(apiUrl + id)
       .then((respone) => {
-        console.log(respone);
+        console.log(respone.data.sprites.other["official-artwork"]);
         this.setState({
-          picture: respone.data.sprites.front_default,
+          picture: respone.data.sprites.other["official-artwork"].front_default,
           name: respone.data.name,
+          id: respone.data.id,
         });
       })
       .catch((error) => console.log(error));
@@ -35,7 +38,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Picture picture={this.state.picture} />
-        <h1>{this.state.name}</h1>
+        <Answer name={this.state.name} id={this.state.id} />
       </div>
     );
   }
