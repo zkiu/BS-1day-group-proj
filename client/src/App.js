@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import axios from "axios";
 import Picture from "./components/Picture";
-// import Answer from "./components/Answer";
+import Answer from "./components/Answer";
 
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 let randomPokemonId = 0;
@@ -27,6 +27,8 @@ class App extends React.Component {
   }
   reloadPokemon() {
     this.getPokemon();
+    document.querySelector("#pokepic").classList.toggle("toggle-img");
+    document.querySelector("#myList").classList.toggle("character-name__frame");
   }
   getPokemonData = (id) => {
     axios
@@ -57,10 +59,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <h1 className="large">What's That Pokemon?</h1>
         <Picture picture={this.state.picture} />
-        {/* <Answer name={this.state.name[0]} id={this.state.id} /> */}
-
-        <button onClick={this.reloadPokemon.bind(this)}>Refresh</button>
+        <Answer name={this.state.name[0]} id={this.state.id} />
+        <button onClick={this.reloadPokemon.bind(this)}>New Pokemon</button>
       </div>
     );
   }

@@ -19,7 +19,7 @@ code {
 }
 
 .img-container__img {
-  width: 50vw;
+  width: 200px;
   filter: blur(5px) grayscale(100%) contrast(0.1);
   transition: all 1s;
 }
@@ -30,4 +30,20 @@ code {
 li {
   list-style: none;
   text-transform: capitalize;
+}
+.character-name__frame {
+  visibility: hidden;
+}
+
+.character-name {
+  font-size: large;
+  color: orange;
+}
+
+h2 {
+  text-align: center;
+}
+
+.large {
+  font-size: 3rem;
 }
